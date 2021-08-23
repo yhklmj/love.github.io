@@ -1,22 +1,108 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"
-    />
-    <link rel="stylesheet" href="./umi.css" />
-    <script>
-      window.routerBase = "/";
-    </script>
-    <script>
-      //! umi version: 3.5.17
-    </script>
-  </head>
-  <body>
-    <div id="root"></div>
+<html lang="en">
 
-    <script src="./umi.js"></script>
-  </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./reset.css">
+    <script src="./base.js"></script>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        
+        textarea {
+            display: block;
+            width: 500px;
+            height: 300px;
+            resize: none;
+            border: 5px solid #000;
+            margin: 20px auto;
+            font-size: 24px;
+        }
+        
+        #btn {
+            display: block;
+            padding: 10px;
+            margin: 0 auto;
+            width: 94px;
+            font-size: 18px;
+        }
+        
+        .liuyan {
+            width: 600px;
+            min-height: 100px;
+            border: 5px solid #666;
+            border-radius: 10px;
+            margin: 20px auto;
+        }
+        
+        .neirong {
+            min-height: 80px;
+            padding: 10px;
+        }
+        
+        .time {
+            text-align: right;
+            padding: 0 10px 0 0;
+            line-height: 20px;
+        }
+    </style>
+    <script>
+        $(function() {
+            var ls = localStorage;
+            var txt = $('#txt');
+            var btn = $('#btn');
+            var main = $('#main');
+            var flag = true;
+            if (ls.getItem('liuy')) {
+                getLs()
+            }
+
+            function getLs() {
+                main[0].innerHTML += ls.getItem('liuy');
+            }
+
+            tiJiao()
+
+            function tiJiao() {
+                txt = $('#txt');
+                btn = $('#btn');
+                main = $('#main');
+                btn.on('click', function() {
+                    if (flag) {
+                        console.log(flag)
+                        if (txt[0].value != "") {
+                            flag = false;
+                            var date = new Date();
+                            main[0].innerHTML += `<div class="liuyan">
+                                   <p class="neirong">${txt[0].value.replace(/<[^<>]+>/g, "")}</p>
+                                   <p class="time">${date.toLocaleString()}</p>
+                                   </div>`
+                            txt[0].value = "";
+                            ls.setItem('liuy', main[0].innerHTML)
+                        }
+                        setTimeout(function() {
+                            flag = true;
+                        }, 5000)
+                    }
+                })
+            }
+        })
+    </script>
+</head>
+
+<body>
+    <textarea name="white" id="txt" cols="30" rows="10" placeholder="留言内容..."></textarea>
+    <button id="btn">提交</button>
+    <div id="main"></div>
+    <!-- <div class="liuyan">
+        <p class="neirong">留言内容</p>
+        <p class="time"></p>
+    </div> -->
+</body>
+
 </html>

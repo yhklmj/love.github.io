@@ -1,0 +1,94 @@
+/* 重置样式 */
+
+body,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ol,
+ul,
+dt,
+dd,
+fieldset,
+legend,
+input,
+img,
+select,
+dl {
+    margin: 0;
+    padding: 0
+}
+
+body {
+    font-family: "微软雅黑"
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+fieldset,
+img {
+    border: none;
+}
+
+img {
+    display: block;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+input,
+button,
+textarea,
+select,
+body {
+    font: 12px "微软雅黑"
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0
+}
+
+i,
+b,
+strong,
+em,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: normal;
+    font-style: normal
+}
+
+.clear::after {
+    content: "";
+    clear: both;
+    height: 0;
+    visibility: hidden;
+    overflow: hidden;
+    display: block;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
